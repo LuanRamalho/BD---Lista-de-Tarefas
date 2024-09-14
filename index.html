@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Nomes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastro de Nomes</h1>
+        <input type="text" id="nameInput" placeholder="Digite a tarefa">
+        <button id="addNameBtn">Adicionar Tarefa</button>
+        <input type="text" id="searchInput" placeholder="Buscar por Tarefa">
+        <div class="sort-buttons">
+            <button id="sortIdAsc">Ordem Crescente por ID</button>
+            <button id="sortIdDesc">Ordem Decrescente por ID</button>
+            <button id="sortNameAsc">Ordem Crescente por Nome</button>
+            <button id="sortNameDesc">Ordem Decrescente por Nome</button>
+        </div>
+        <!-- Adiciona uma área para a nota e o botão para exibir a área -->
+        <div id="noteArea" class="note-area">
+            <textarea id="noteInputArea" placeholder="Digite a nota aqui..."></textarea>
+            <button id="saveNoteBtn">Salvar Nota</button>
+        </div>
+        <table id="namesTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tarefa</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Os nomes serão adicionados aqui -->
+            </tbody>
+        </table>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
