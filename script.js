@@ -57,7 +57,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${nameObj.id}</td>
-                <td>${nameObj.name}</td>
+                <td class="editable" data-id="${nameObj.id}">
+                    <span class="name-text">${nameObj.name}</span>
+                    <input type="text" class="edit-input" value="${nameObj.name}" style="display:none;" />
+                </td>
                 <td class="actions">
                     <button class="edit-btn" data-id="${nameObj.id}">Editar</button>
                     <button class="note-btn" data-id="${nameObj.id}">Adicionar Nota</button>
@@ -69,10 +72,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.querySelectorAll('.edit-btn').forEach(btn => {
             btn.addEventListener('click', () => {
+                const row = btn.closest('tr');
                 const id = parseInt(btn.dataset.id);
-                const nameObj = names.find(name => name.id === id);
-                if (nameObj) {
-                    showModal(nameObj);
+                const nameCell = row.querySelector('.editable');
+                const nameText = nameCell.querySelector('.name-text');
+                const editInput = nameCell.querySelector('.edit-input');
+
+                if (editInput.style.display === 'none') {
+                    // Alterna para o modo de edição
+                    nameText.style.display = 'none';
+                    editInput.style.display = 'inline-block';
+                    btn.textContent = 'Salvar';
+                } else {
+                    // Salva a edição
+                    const newName = editInput.value.trim();
+                    if (newName) {
+                        const nameObj = names.find(name => name.id === id);
+                        nameObj.name = newName;
+                        localStorage.setItem('names', JSON.stringify(names));
+                        updateTable(names);
+                    }
                 }
             });
         });
@@ -111,37 +130,4 @@ document.addEventListener('DOMContentLoaded', () => {
             noteArea.style.display = 'none';
         }
     });
-
-    function showModal(nameObj) {
-        const modal = document.createElement('div');
-        modal.className = 'modal';
-        modal.innerHTML = `
-            <div class="modal-content">
-                <h2>Editar Nome</h2>
-                <p>Nome: ${nameObj.name}</p>
-                <textarea id="noteInput">${nameObj.note}</textarea>
-                <button id="saveBtn">Salvar</button>
-                <button class="cancel">Cancelar</button>
-            </div>
-        `;
-        document.body.appendChild(modal);
-
-        document.getElementById('saveBtn').addEventListener('click', () => {
-            const note = document.getElementById('noteInput').value.trim();
-            nameObj.note = note;
-            localStorage.setItem('names', JSON.stringify(names));
-            updateTable(names);
-            document.body.removeChild(modal);
-        });
-
-        document.querySelector('.cancel').addEventListener('click', () => {
-            document.body.removeChild(modal);
-        });
-
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                document.body.removeChild(modal);
-            }
-        });
-    }
 });
