@@ -5,7 +5,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f4f4f4;
+    background: linear-gradient(135deg, #e0f7fa, #80deea);
 }
 
 .container {
@@ -14,32 +14,43 @@ body {
     background: #fff;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 h1 {
     text-align: center;
+    color: #00796b; /* Cor do título */
 }
 
-input {
-    width: calc(100% - 130px);
+input, textarea {
+    width: calc(100% - 20px);
     padding: 10px;
-    margin-right: 10px;
+    margin-bottom: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    margin-bottom: 10px;
+    font-size: 16px;
 }
 
 button {
     padding: 10px;
     border: none;
-    background-color: #28a745;
-    color: #fff;
     border-radius: 4px;
     cursor: pointer;
+    font-size: 16px;
+    color: white;
+    background-color: darkgreen;
 }
 
 button:hover {
+   background-color: purple;
+}
+
+button.primary {
+    background-color: #28a745; /* Cor dos botões primários */
+    color: #fff;
+}
+
+button.primary:hover {
     background-color: #218838;
 }
 
@@ -59,16 +70,14 @@ th, td {
 }
 
 thead {
-    background-color: #f2f2f2;
+    background-color: #00796b; /* Cor do cabeçalho da tabela */
+    color: #fff;
 }
 
 .actions button {
-    background-color: #007bff;
-    border: none;
+    background-color: #007bff; /* Cor dos botões de ação */
     color: #fff;
     padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
     margin-right: 5px;
 }
 
@@ -77,14 +86,12 @@ thead {
 }
 
 .delete-btn {
-    background-color: #dc3545;
+    background-color: #dc3545; /* Cor do botão de deletar */
 }
 
 .delete-btn:hover {
     background-color: #c82333;
 }
-
-/* Estilo para os bot�es de ordena��o */
 
 .sort-buttons {
     margin: 10px 0;
@@ -94,20 +101,14 @@ thead {
 .sort-buttons button {
     padding: 10px;
     border: none;
-    background-color: #007bff;
-    color: #fff;
     border-radius: 4px;
     cursor: pointer;
     margin: 0 5px;
+    background-color: darkgoldenrod;
 }
 
-.sort-buttons button:hover {
-    background-color: #0056b3;
-}
-
-/* Estilo espec�fico para os bot�es de ordena��o crescente e decrescente */
 .sort-buttons .asc-btn {
-    background-color: #007bff;
+    background-color: #007bff; /* Cor do botão de ordenação crescente */
 }
 
 .sort-buttons .asc-btn:hover {
@@ -115,26 +116,14 @@ thead {
 }
 
 .sort-buttons .desc-btn {
-    background-color: #dc3545;
+    background-color: #dc3545; /* Cor do botão de ordenação decrescente */
 }
 
 .sort-buttons .desc-btn:hover {
     background-color: #c82333;
 }
 
-
-
-/* Adicione isto ao final do arquivo styles.css */
-
-textarea {
-    width: calc(100% - 22px);
-    height: 100px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-bottom: 10px;
-}
-
+/* Estilo para o modal */
 .modal {
     display: none;
     position: fixed;
@@ -142,7 +131,7 @@ textarea {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
     justify-content: center;
     align-items: center;
 }
@@ -154,34 +143,25 @@ textarea {
     width: 80%;
     max-width: 500px;
     position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .modal-content button {
     margin: 0;
-    background-color: #28a745;
 }
 
 .modal-content button.cancel {
-    background-color: #dc3545;
-}
-
-.modal-content button:hover {
-    background-color: #218838;
+    background-color: #dc3545; /* Cor do botão cancelar */
 }
 
 .modal-content button.cancel:hover {
     background-color: #c82333;
 }
 
-
-.modal-content button.cancel {
-    background-color: #dc3545;
+.modal-content button.primary {
+    background-color: #28a745; /* Cor do botão confirmar */
 }
 
-.modal-content button:hover {
+.modal-content button.primary:hover {
     background-color: #218838;
-}
-
-.modal-content button.cancel:hover {
-    background-color: #c82333;
 }
