@@ -105,6 +105,11 @@ thead {
     cursor: pointer;
     margin: 0 5px;
     background-color: darkgoldenrod;
+
+}
+
+.sort-buttons button:hover{
+    background-color: purple;
 }
 
 .sort-buttons .asc-btn {
